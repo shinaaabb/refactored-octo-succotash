@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIRL'S FASHION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cart.css">
+    <style>
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h1>GIRL'S FASHION</h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="product.html">PRODUCT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="cart.html">CART</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <h2>購物車</h2>
+        <div id="cart-content"></div>
+    </main>
+    
+    <script>
+        function displayCart() {
+            const cartContent = document.getElementById('cart-content');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<p>購物車是空的。</p>';
+                return;
+            }
+            
+            let tableHTML = `
+                <table>
+                    <tr>
+                        <th>商品名稱</th>
+                        <th>顏色</th>
+                        <th>尺寸</th>
+                        <th>數量</th>
+                        <th>操作</th>
+                    </tr>
+            `;
+            
+            cart.forEach((item, index) => {
+                tableHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.color}</td>
+                        <td>${item.size}</td>
+                        <td>${item.quantity}</td>
+                        <td><button class="delete-btn" onclick="deleteItem(${index})">刪除</button></td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += '</table>';
+            cartContent.innerHTML = tableHTML;
+        }
+        
+        function deleteItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        
+        // 页面加载时显示购物车内容
+        window.onload = displayCart;
+    </script>
+</body>
+</html>

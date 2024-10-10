@@ -1,0 +1,180 @@
+body {
+    font-family: 'Cinzel', serif;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px; /* 限制主內容區域的最大寬度 */
+    margin: 0 auto; /* 居中主內容區域 */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 2rem;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.header nav a {
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+.product-detail {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: flex-start; /* 確保子元素從頂部對齊 */
+}
+
+.product-detail .product-image {
+    flex: 1;
+    max-width: 60%; /* 增加圖片容器的最大寬度 */
+}
+
+.product-detail .product-image img {
+    width: 100%;
+    height: auto;
+    max-width: none; /* 移除最大寬度限制，讓圖片填滿容器 */
+    display: block;
+}
+
+.product-detail .product-info {
+    flex: 1;
+    max-width: 40%; /* 確保文字信息不會佔用太多空間 */
+}
+
+.product-detail h2 {
+    font-size: 1.5rem;
+    margin-top: 0; /* 移除頂部邊距，使標題與圖片頂部對齊 */
+    margin-bottom: 2rem;
+}
+
+.product-detail .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.size, .color, .quantity {
+    margin-bottom: 2rem;
+}
+
+.size select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
+}
+
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.color-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.color-btn.selected {
+    background-color: #333;
+    color: white;
+}
+
+.qty-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qty-btn {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+}
+
+.qty-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity input {
+    width: 50px;
+    padding: 0.25rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    font-family: 'Cinzel', serif;
+}
+
+.add-to-cart {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+}
+
+/* 添加響應式設計 */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+    }
+
+    .product-detail .product-image,
+    .product-detail .product-info {
+        max-width: 100%;
+    }
+}
+/* CHAT 按鈕樣式 */
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-button:hover {
+    background-color: #e0e0e0;
+}

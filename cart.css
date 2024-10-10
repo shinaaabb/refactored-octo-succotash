@@ -1,0 +1,54 @@
+body {
+    font-family: 'Cinzel', serif;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px; /* 限制主內容區域的最大寬度 */
+    margin: 0 auto; /* 居中主內容區域 */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 2rem;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.header nav a {
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+/* 您原有的 CSS 樣式保持不變 */
+
+/* CHAT 按鈕樣式 */
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-button:hover {
+    background-color: #e0e0e0;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>細肩帶背心 - GIRL'S FASHION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet1.css">
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h1>GIRL'S FASHION</h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="product.html">PRODUCT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="cart.html">CART</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="breadcrumb">
+            <a href="home.html">首頁</a>
+            <span>&gt;</span>
+            <span>細肩帶背心</span>
+        </div>
+        
+        <section class="product-detail">
+            <div class="product-image">
+                <img src="https://shinnnnnn.sirv.com/DALL%C2%B7E%202024-10-10%2001.08.31%20-%20A%20model%20wearing%20a%20thin-strapped%20camisole%2C%20perfect%20for%20a%20fashion%20website%20display.%20The%20focus%20is%20on%20the%20design%20and%20texture%20of%20the%20top%2C%20with%20smooth%2C%20light.png" alt="細肩帶背心">
+            </div>
+            <div class="product-info">
+                <h2>細肩帶背心</h2>
+                <p class="price">NT$ 450</p>
+                
+                <div class="size">
+                    <label for="size">尺寸：</label>
+                    <select name="size" id="size">
+                        <option value="F">F</option>
+                    </select>
+                </div>
+                
+                <div class="color">
+                    <span>顏色：</span>
+                    <div class="color-options">
+                        <button class="color-btn" data-color="黑色">黑色</button>
+                        <button class="color-btn" data-color="白色">白色</button>
+                        <button class="color-btn" data-color="灰色">灰色</button>
+                        <button class="color-btn" data-color="咖色">咖色</button>
+                    </div>
+                </div>
+                
+                <div class="quantity">
+                    <label for="quantity">數量：</label>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus" onclick="decreaseQuantity()">-</button>
+                        <input type="number" id="quantity" value="1" min="1" readonly>
+                        <button class="qty-btn plus" onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+                
+                <button class="add-to-cart" onclick="addToCart()">加入購物車</button>
+            </div>
+        </section>
+    </main>
+    <a href="#" class="chat-button">CHAT</a>
+    
+    <script>
+        function decreaseQuantity() {
+            let quantity = parseInt(document.getElementById('quantity').value);
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').value = quantity;
+            }
+        }
+        
+        function increaseQuantity() {
+            let quantity = parseInt(document.getElementById('quantity').value);
+            quantity++;
+            document.getElementById('quantity').value = quantity;
+        }
+        
+        // 添加顏色選擇功能
+        const colorButtons = document.querySelectorAll('.color-btn');
+        colorButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                colorButtons.forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        function addToCart() {
+            const productName = document.querySelector('h2').textContent;
+            const selectedColor = document.querySelector('.color-btn.selected');
+            const color = selectedColor ? selectedColor.getAttribute('data-color') : '未選擇';
+            const size = document.getElementById('size').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            const cartItem = {
+                name: productName,
+                color: color,
+                size: size,
+                quantity: quantity
+            };
+            
+            // 获取现有的购物车数据或创建一个新数组
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // 添加新商品到购物车
+            cart.push(cartItem);
+            
+            // 将更新后的购物车数据保存到 localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            alert('商品已加入購物車！');
+            
+            // 可选：重定向到购物车页面
+            // window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>
